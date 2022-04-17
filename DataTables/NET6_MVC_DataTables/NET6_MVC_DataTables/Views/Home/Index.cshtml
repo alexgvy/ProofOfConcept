@@ -1,0 +1,453 @@
+﻿
+
+@{
+    ViewBag.Title = "Video Library";
+}
+
+<style>
+    .cards tbody tr {
+        float: left;
+        width: 17rem; /*19rem;*/
+        margin: 0.5rem;
+        border: 0.0625rem solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+        box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+    }
+
+    .cards tbody td {
+        display: block;
+    }
+
+    .cards thead {
+        display: none;
+    }
+
+    .cards td:before {
+        content: attr(data-label);
+        position: relative;
+        float: left;
+        color: #808080;
+        min-width: 4rem;
+        margin-left: 0;
+        margin-right: 1rem;
+        text-align: left;
+    }
+
+    tr.selected td:before {
+        color: #CCC;
+    }
+
+    .table .avatar {
+        width: 50px;
+    }
+
+    .cards .avatar {
+        width: 150px;
+        margin: 15px;
+    }
+
+    .odd {
+        height: auto !important;
+    }
+
+    .even {
+        height: auto !important;
+    }
+
+   
+</style>
+
+@*<div class="card">
+    <div class="card-body">
+    <section>
+    <div class="d-flex justify-content-center mb-4">
+
+    <h2 class="text-uppercase"> @VideoLocalizer["Videos"]</h2>
+    </div>
+
+    </section>
+
+    <hr class="my-5" />
+
+    <div class="card card-default">
+    <div class="card-body">
+    <div class="container">*@
+
+<!-- Tabs navs -->
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active"
+           id="ex1-tab-1"
+           data-mdb-toggle="tab"
+           href="#ex1-tabs-1"
+           role="tab"
+           aria-controls="ex1-tabs-1"
+           aria-selected="true">All Videos</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex1-tab-2"
+           data-mdb-toggle="tab"
+           href="#ex1-tabs-2"
+           role="tab"
+           aria-controls="ex1-tabs-2"
+           aria-selected="false">Video Series</a>
+    </li>
+    @* <li class="nav-item" role="presentation">
+        <a class="nav-link"
+        id="ex1-tab-3"
+        data-mdb-toggle="tab"
+        href="#ex1-tabs-3"
+        role="tab"
+        aria-controls="ex1-tabs-3"
+        aria-selected="false">Tab 3</a>
+        </li>*@
+</ul>
+<!-- Tabs navs -->
+<!-- Tabs content -->
+<div class="tab-content" id="ex1-content">
+    <div class="tab-pane fade show active"
+         id="ex1-tabs-1"
+         role="tabpanel"
+         aria-labelledby="ex1-tab-1">
+
+        @* #1 Content  -  Start *@
+        <div class="row">
+            <div class="col-md-3 mb-5">
+                <!-- Section: Filters -->
+                <section>
+                    <div class="row">
+                         <!-- Section: Condition -->
+                                    <section id="captionSection" class="mb-4" data-filter="condition">
+                                        
+
+                                    </section>
+                                    <!-- Section: Condition -->
+                    </div>
+                    <div class="row">
+                          <!-- Section: Avg. Customer Review -->
+                                    <section class="mb-4" id="athleteSection">
+                                      
+
+
+                                    </section>
+                                    <!-- Section: Avg. Customer Review -->
+                    </div>
+                    <div class="row">
+                         <!-- Section: Price -->
+                                    <section class="mb-4" id="techniqueSection">
+                                     
+                                    </section>
+                                    <!-- Section: Price -->
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+                   
+
+
+                    <div class="row mt-4">
+                        <div class="col-lg-8 col-md-12 mb-3 mb-lg-0">
+                            <div class="form-outline">
+                                <input type="text" id="form3Example1" class="form-control" />
+                                <label class="form-label" for="form3Example1">Search term</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-8 mb-lg-0 align-items-center">
+                            <a asp-controller="Library" asp-action="Search" class="btn yellow-background">Search</a>
+                        </div>
+                    </div>
+                  
+                </section>
+                <!-- Section: Filters -->
+            </div>
+            <div class="col-md-9">
+                @*https://www.datatables.net/release-datatables/examples/api/multi_filter_select.html*@
+                <form asp-controller="library" asp-action="Player" method="post" role="form" class="form-horizontal">
+                    @*<div style="width:90%; margin:0 auto;">*@
+                    <div class="table-responsive">
+                        <table id="videosTable" class="table table-borderless table-hover dt-responsive cards" style="width:100%;" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>VideoId</th>
+                                    <th>Thumbnail</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Year</th>
+                                    <th>Athlete</th>
+                                </tr>
+                            </thead>
+                            
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @* #1 Content  -  End *@
+    </div>
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        @* #2 Content  -  Start *@
+
+        @* #2 Content  -  End *@
+    </div>
+    @* <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        Tab 3 content
+        </div>*@
+</div>
+<!-- Tabs content -->
+@*                </div>
+    </div>
+    </div>
+    </div>
+    </div>*@
+
+
+@section Scripts {
+<script>
+           $(document).ready(function () {
+
+        function getPlayer(videoId) {
+
+            if (videoId) {
+
+                var data = JSON.stringify({
+                    VideoId: videoId
+                });
+                var antiForgery = getAntiForgeryToken();
+
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("GetPlayer")',
+
+                    data: data,
+                    processData: false,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        alert('Playing video now');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        alert('Unable to play video at this time.');
+                    }
+                });
+            }
+        }
+
+        var antiForgery = getAntiForgeryToken();
+        // LOOK AT: https://stackoverflow.com/questions/49504657/how-to-filter-data-tables-using-two-or-more-dependent-drop-down-list
+        var table = $('#videosTable').dataTable({
+            //"initComplete": function () {
+            //            this.api().columns([3,4,5]).every( function () {
+            //                var column = this;
+
+            //                var destination = $("#captionSection");
+            //                $("#captionSection > select").remove();
+
+            //                var columnPosition = column[0][0];
+
+            //                // Don't create dropdown filters for description.
+            //                if(columnPosition != 2){
+                                
+            //                    if(columnPosition == 4){
+            //                        destination = $("#athleteSection");
+            //                        var blah = $("#athleteSection > select");
+            //                        $("#athleteSection > select").remove();
+            //                    }
+            //                    else if(columnPosition == 5){
+            //                        destination = $("#techniqueSection");
+            //                        $("#techniqueSection > select").remove();
+            //                    }
+
+            //                    var select = $('<select><option value=""></option></select>')
+            //                    .appendTo(destination.empty())//.children("select").remove()) //$(column.footer()).empty() )
+            //                    .on( 'change', function () {
+            //                        var val = $.fn.dataTable.util.escapeRegex(
+            //                            $(this).val()
+            //                        );
+
+            //                        column
+            //                            .search( val ? '^'+val+'$' : '', true, false )
+            //                            .draw();
+            //                    } );
+
+            //                column.data().unique().sort().each( function ( d, j ) {
+            //                    select.append( '<option value="'+d+'">'+d+'</option>' )
+            //                } );
+            //                }
+            //            } );
+            //        },
+            'dom': 'Plfrtip',
+            'searchPanes':{
+                layout:'columns-2',
+                 initCollapsed: true
+                //, options:[
+                //    {
+                //        label:"test",
+                //        value: function(rowData, rowIdx){
+                //            return rowData[0]
+                //        }
+                //    }
+                //]
+            },
+        //    "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+        //"<'row'<'col-sm-12'tr>>" +
+        //"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>" ,
+
+
+            "pageLength": 12,
+            "select": true,
+            "lengthMenu": [[12, 24, 48, -1], [12, 24, 48, "All"]],
+            "order": [[1, 'asc']],
+            "processing": true, @*Show progress bar.*@
+            "language": {
+                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+            },
+            "serverSide": true, @*Process on the server side.*@
+            "filter": true, @*Search box.*@
+            "orderMulti": false, @*for disable multiple column at once.*@
+            "pagingType": "full_numbers", @* 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers. Src. https://datatables.net/examples/basic_init/alt_pagination.html *@
+
+            "ajax": {
+                "type": 'post',
+                "url": '@Url.Action("GetVideoList")',
+                "beforeSend": function (xhr) {
+                    xhr.setRequestHeader("RequestVerificationToken", antiForgery);
+                },
+                //"data": "data",
+                "processData": false,
+                "datatype": "json",
+                "data": function (d) {
+                    if (window.datatables_filter) {
+                        d.filter = window.datatables_filter;
+                        window.datatables_filter = "";
+                    } else {
+                        d.filter = "";
+                    }
+                    return JSON.stringify({
+                        parameters: d
+                    });
+                },
+            },
+
+            "columnDefs": [{
+                    "max-width": "20%",
+                    "targets": [1, 2]
+                }
+            ],
+            "columns": [{
+                    "data": "videoId",
+                    "name": "VideoId",
+                    "visible": false,
+                    "searchable": false,
+                    "autoWidth": true
+                }, {
+                    data: "ImageUrl",
+                    render: function (data, type, full, meta) {
+
+                        return '<img src="' + full.imageUrl + '" class="card-img-top" alt="image" />';
+                    },
+                }, {
+                    "data": "title",
+                    "name": "Title",
+                }, {
+                    "data": "description",
+                    "name": "Description",
+                     "visible": false,
+                    "orderable": false
+                }, {
+                    "data": "year",
+                    "name": "Year",
+                     "visible": false,
+                    "autoWidth": true
+                }, {
+                    "data": "athletesFieldValue",
+                    "name": "athletesFieldValue",
+                    "visible": false,
+                    "searchable": true
+                }
+            ],
+
+            'drawCallback': function (settings) {
+                var api = this.api();
+                var $table = $(api.table().node());
+
+                if ($table.hasClass('cards')) {
+
+                    // Create an array of labels containing all table headers
+                    var labels = [];
+                    $('thead th', $table).each(function () {
+                        labels.push($(this).text());
+                    });
+
+                    // Add data-label attribute to each cell
+                    $('tbody tr', $table).each(function () {
+                        $(this).find('td').each(function (column) {
+                            $(this).attr('cart-text', labels[column]); /*data-label*/
+                        });
+                    });
+
+                    var max = 0;
+                    $('tbody tr', $table).each(function () {
+                        max = Math.max($(this).height(), max);
+                    }).height(max);
+
+                } else {
+                    // Remove data-label attribute from each cell
+                    $('tbody td', $table).each(function () {
+                        $(this).removeAttr('data-label');
+                    });
+
+                    $('tbody tr', $table).each(function () {
+                        $(this).height('auto');
+                    });
+                }
+            }
+
+        })
+            .on('select', function (e, dt, type, indexes) {
+                var rowData = table.rows(indexes).data().toArray();
+                    $('#row-data').html(JSON.stringify(rowData));
+            })
+            .on('deselect', function () {
+                $('#row-data').empty();
+
+            });
+
+        function getAntiForgeryToken() {
+            return $('input[name=__RequestVerificationToken]').val();
+        }
+
+        $(document.getElementById('videosTable')).on('click', 'tr', function (e) {
+
+            var currentTarget = e.currentTarget;
+            if(currentTarget && currentTarget.nodeName === "TR")
+            {
+                var rowIndex = currentTarget._DT_RowIndex;
+
+
+                if((rowIndex !== null) && (rowIndex !== undefined) && !isNaN(rowIndex) && (rowIndex >= 0))
+                {
+                    var table = $(document.getElementById('videosTable')).DataTable();
+
+                    var test = table.rows({selected: true});
+                    var selectedItem = table.rows({
+                        selected: true
+                    }).data()[rowIndex];
+
+                    getPlayer(selectedItem.videoId);
+                }
+            }
+
+
+            //console.log(selectedItem)
+        });
+
+    });
+
+
+</script>
+}

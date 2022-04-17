@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b40bb632-cd07-4bb9-918e-5202a1ae3580": {
+      "ProjectGuid": "b40bb632-cd07-4bb9-918e-5202a1ae3580",
+      "DisplayName": "NET6_MVC_DataTables",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
